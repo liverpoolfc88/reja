@@ -1,46 +1,58 @@
-<section id="portfolio" class="portfolio section-bg">
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="section-title">
-            <h2><?=$shop->name?></h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+<!-- ======= Intro Single ======= -->
+<section style="padding-top: 0px" class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single"><?=$shop->name?></h1>
+                    <span class="color-text-a">Grid News</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            News Grid
+                        </li>
+                    </ol>
+                </nav>
+            </div>
         </div>
-
-<!--        <div class="row">-->
-<!--            <div class="col-lg-12">-->
-<!--                <ul id="portfolio-flters">-->
-<!--                    <li data-filter="*" class="filter-active">All</li>-->
-<!--                    <li data-filter=".filter-app">App</li>-->
-<!--                    <li data-filter=".filter-card">Card</li>-->
-<!--                    <li data-filter=".filter-web">Web</li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-
-        <div class="row portfolio-container">
-
-            <?
-            foreach ($shop_item as $key=>$value):
-//                var_dump($shop_item); die();
-            ?>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <img src="/themes/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                        <h4><?=$value->name?></h4>
-                        <p>App</p>
-                        <div class="portfolio-links">
-                            <a href="/themes/assets/img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="icofont-eye"></i></a>
-                            <a href="portfolio-details.html" title="More Details"><i class="icofont-external-link"></i></a>
+    </div>
+</section><!-- End Intro Single-->
+<!-- =======  Blog Grid ======= -->
+<section class="news-grid grid">
+    <div class="container">
+        <div class="row">
+            <?  foreach ($shop_item as $key=>$value):?>
+            <div class="col-md-4">
+                <div class="card-box-b card-shadow news-box">
+                    <div class="img-box-b">
+                        <img src="/themes/assets/img/post-1.jpg" alt="" class="img-b img-fluid">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-header-b">
+                            <div class="card-category-b">
+                                <a href="#" class="category-b"><?=$value->name?></a>
+                            </div>
+                            <div class="card-title-b">
+                                <h2 class="title-2">
+                                    <a href="blog-single.html"><?=$value->short?>
+                                        <br></a>
+                                </h2>
+                            </div>
+                            <div class="card-date">
+                                <span class="fa fa-eye">  (<?=$value->views?>)</span><br>
+                                <span class="fa fa-calendar date-b"> (<?=($value->updated_date)?$value->updated_date:$value->created_date?>)</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <? endforeach; ?>
-
-
-
         </div>
-
     </div>
-</section><!-- End Our Portfolio Section -->
+</section>

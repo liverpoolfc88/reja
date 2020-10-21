@@ -134,7 +134,6 @@ class SiteController extends Controller
 
     public function renderPage($shop, $menu)
     {
-
         $shop_item = ShopItems::find()->where(['shop_id'=>$shop[0]->id])->all();
         $shop = $shop[0];
 //        $shop_item = $shop_item[0];
@@ -146,6 +145,7 @@ class SiteController extends Controller
             'shop_item'=>$shop_item
             ]);
     }
+
     public function renderPages($slug)
     {
         $menu = TumansShahars::find()->where(['slug'=>$slug])->one();

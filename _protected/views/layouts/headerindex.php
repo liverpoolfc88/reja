@@ -10,10 +10,10 @@ $menu = Viloyats::find()->all();
 <style>
 
     .intro {
-        height: 90vh;
+        height: 95vh;
     }
     .intro .carousel-item-a {
-        height: 90vh;
+        height: 95vh;
     }
 </style>
 <!-- ======= Top Bar ======= -->
