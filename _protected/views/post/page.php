@@ -36,7 +36,7 @@
                     <div class="card-overlay">
                         <div class="card-header-b">
                             <div class="card-category-b">
-                                <a href="#" class="category-b"><?=$value->name?></a>
+                                <a href=""   data-toggle="modal" data-target="#<?=$value->slug?>" class="category-b"><?=$value->name?></a>
                             </div>
                             <div class="card-title-b">
                                 <h2 class="title-2">
@@ -52,7 +52,49 @@
                     </div>
                 </div>
             </div>
+
+                <div class="modal fade" id="<?=$value->slug?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-lg modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel"><?=$value->name?></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <? endforeach; ?>
         </div>
     </div>
+
+
+<!--     Button trigger modal -->
+<!--    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
+<!--        Launch demo modal-->
+<!--    </button>-->
+
+    <!-- Modal -->
+
+
 </section>
+<!---->
+<!--<script>-->
+<!--    var value = 'salom';-->
+<!--    document.getElementById("myModalLabel").innerHTML = value;-->
+<!---->
+<!--    function myFunction(value) {-->
+<!--        alert(value);-->
+<!--    }-->
+<!--</script>-->
