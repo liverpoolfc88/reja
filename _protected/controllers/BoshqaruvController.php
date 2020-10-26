@@ -117,7 +117,18 @@ class BoshqaruvController extends Controller
 
     public function actionShopcreate(){
 
-        return $this->render('shopcreate');
+        $model = new Shops();
+
+        if ($model->load(Yii::$app->request->post()) ){
+
+            $model->user_id = Yii::$app->user->identity->id;
+            $model->slug = strtolower(str_replace(" ","",$model->name.time()));
+            $model->save();
+            return $this->redirect(['index']);
+        }
+        return $this->render('shopcreate',[
+            'model' =>$model
+        ]);
     }
 
 
@@ -130,7 +141,7 @@ class BoshqaruvController extends Controller
             $shops = Shops::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
 
             $model->tuman_shahar_id = $shops->tumans_shahars_id;
-            $model->slug = strtolower(str_replace(" ","&".time().'&',$model->name));
+            $model->slug = strtolower(str_replace(" ","",$model->name.time()));
 //            $model->slug = strtolower(count_chars($model->name,3));
             $model->shop_id = $shops->id;
             $model->user_id = Yii::$app->user->identity->id;

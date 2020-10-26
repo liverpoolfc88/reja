@@ -174,7 +174,7 @@ $u = User::find()->where(['id'=>$id])->one();
                 <?} else{?>
                     <li class="nav-item">
 
-                         <a class="nav-link" target="_blank" href="<?=Url::to(['boshqaruv/index'])?>">Boshqaruv</a>
+                        <a class="nav-link" href="<?=(!empty($u->shop))?Url::to(['/boshqaruv/index']):Url::to(['/boshqaruv/shopcreate'])?>">Boshqaruv</a>
 <!--                           <a class="nav-link" target="_blank" href="--><?//=Url::to(['boshqaruv/shopcreate'])?><!--">Boshqaruv</a>-->
 
                     </li>

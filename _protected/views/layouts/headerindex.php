@@ -2,9 +2,12 @@
 use app\models\Viloyats;
 use app\models\TumansShahars;
 use yii\helpers\Url;
+use app\models\User;
 use yii\helpers\Html;
 $menu = Viloyats::find()->all();
 //var_dump($childmenu); die();
+$id = Yii::$app->user->identity->id;
+$u = User::find()->where(['id'=>$id])->one();
 ?>
 
 <style>
@@ -169,7 +172,7 @@ $menu = Viloyats::find()->all();
                     </li>
                 <?} else{?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=Url::to(['/boshqaruv/index'])?>">Boshqaruv</a>
+                        <a class="nav-link" href="<?=(!empty($u->shop))?Url::to(['/boshqaruv/index']):Url::to(['/boshqaruv/shopcreate'])?>">Boshqaruv</a>
 <!--                        <a class="nav-link" target="_blank" href="--><?//=Url::to(['boshqaruv/shopcreate'])?><!--">Boshqaruv</a>-->
                     </li>
                     <li class="nav-item">

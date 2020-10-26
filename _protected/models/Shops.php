@@ -111,6 +111,15 @@ class Shops extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    public static function usershop(){
+        return  $shop = self::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
+    }
+//
+//    public function static usershop()
+//{
+//$shop = self::find().....
+//}
+
     public function beforeSave($insert){
         if($insert){
 
