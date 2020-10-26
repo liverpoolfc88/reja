@@ -7,6 +7,10 @@ $user = Yii::$app->user->identity;
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
+
+    .padbut{
+        padding-bottom: 20px;
+    }
     /*.media-body:hover{*/
     .media:hover{
         /*font-size: 16px;*/
@@ -61,10 +65,10 @@ $user = Yii::$app->user->identity;
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3">
+                <div class="padbut col-md-6 col-lg-3">
                     <img src="/themes/assets/img/agent-4.jpg" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="padbut col-md-6 col-lg-3">
                     <div class="property-agent">
                         <h4 class="title-agent"><?=$shops->name?></h4>
                         <p class="color-text-a">
@@ -93,41 +97,12 @@ $user = Yii::$app->user->identity;
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </button>
                             </a>
-<!--                        <div class="socials-a">-->
-<!--                            <ul class="list-inline">-->
-<!--                                <li class="list-inline-item">-->
-<!--                                    <a href="#">-->
-<!--                                        <i class="fa fa-facebook" aria-hidden="true"></i>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li class="list-inline-item">-->
-<!--                                    <a href="#">-->
-<!--                                        <i class="fa fa-twitter" aria-hidden="true"></i>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li class="list-inline-item">-->
-<!--                                    <a href="#">-->
-<!--                                        <i class="fa fa-instagram" aria-hidden="true"></i>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li class="list-inline-item">-->
-<!--                                    <a href="#">-->
-<!--                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li class="list-inline-item">-->
-<!--                                    <a href="#">-->
-<!--                                        <i class="fa fa-dribbble" aria-hidden="true"></i>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="padbut col-md-6 col-lg-3">
                     <img src="/themes/assets/img/agent-5.jpg" alt="" class="img-fluid">
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="padbut col-md-6 col-lg-3">
                     <div class="property-agent">
                         <h4 class="title-agent"><?=$user->username?></h4>
                         <p class="color-text-a">
