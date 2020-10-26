@@ -2,6 +2,8 @@
 use yii\helpers\Url;
 //echo $shops;
 $this->title = $menu->name;
+$user = Yii::$app->user->identity;
+
 ?>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
@@ -74,76 +76,87 @@ $this->title = $menu->name;
                                 <span class="color-text-a"><?=$shops->tel?></span>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <strong>Mobile:</strong>
+                                <strong>Telegram:</strong>
                                 <span class="color-text-a"><?=$shops->telegram?></span>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <strong>Email:</strong>
-                                <span class="color-text-a"><?=$shops->tel?></span>
+                                <strong>Locatsiya:</strong>
+                                <span class="color-text-a"><?=$shops->location?></span>
                             </li>
                             <li class="d-flex justify-content-between">
-                                <strong>Skype:</strong>
-                                <span class="color-text-a">Annabela.ge</span>
+                                <strong>video:</strong>
+                                <span class="color-text-a"><?=$shops->youtube_link?></span>
                             </li>
                         </ul>
-                        <div class="socials-a">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">
-                                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                            <a  href="<?=Url::to(['create']);?>">
+                                <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </button>
+                            </a>
+<!--                        <div class="socials-a">-->
+<!--                            <ul class="list-inline">-->
+<!--                                <li class="list-inline-item">-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="fa fa-facebook" aria-hidden="true"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="list-inline-item">-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="fa fa-twitter" aria-hidden="true"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="list-inline-item">-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="fa fa-instagram" aria-hidden="true"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="list-inline-item">-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                                <li class="list-inline-item">-->
+<!--                                    <a href="#">-->
+<!--                                        <i class="fa fa-dribbble" aria-hidden="true"></i>-->
+<!--                                    </a>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <img src="/themes/assets/img/agent-4.jpg" alt="" class="img-fluid">
+                    <img src="/themes/assets/img/agent-5.jpg" alt="" class="img-fluid">
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="property-contact">
-                        <form class="form-a">
-                            <div class="row">
-                                <div class="col-md-12 mb-1">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-1">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-1">
-                                    <div class="form-group">
-                                        <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-a">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="property-agent">
+                        <h4 class="title-agent"><?=$user->username?></h4>
+                        <p class="color-text-a">
+                            <?=$shops->text?>
+                        </p>
+                        <ul class="list-unstyled">
+                            <li class="d-flex justify-content-between">
+                                <strong>Phone:</strong>
+                                <span class="color-text-a"><?=$user->email?></span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong>Telegram:</strong>
+                                <span class="color-text-a"><?=$shops->telegram?></span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong>Locatsiya:</strong>
+                                <span class="color-text-a"><?=$shops->location?></span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                                <strong>video:</strong>
+                                <span class="color-text-a"><?=$shops->youtube_link?></span>
+                            </li>
+                        </ul>
+                        <a  href="<?=Url::to(['create']);?>">
+                            <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </button>
+                        </a>
+
                     </div>
                 </div>
             </div>
