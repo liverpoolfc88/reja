@@ -170,6 +170,7 @@ $menu = Viloyats::find()->all();
                 <?} else{?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=Url::to(['/boshqaruv/index'])?>">Boshqaruv</a>
+<!--                        <a class="nav-link" target="_blank" href="--><?//=Url::to(['boshqaruv/shopcreate'])?><!--">Boshqaruv</a>-->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-method="post" href="<?=Url::to(['/site/logout'])?>">logout</a>

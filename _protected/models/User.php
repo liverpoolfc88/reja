@@ -5,6 +5,7 @@ use app\rbac\models\Role;
 use kartik\password\StrengthValidator;
 use yii\behaviors\TimestampBehavior;
 use Yii;
+use app\models\Shops;
 
 /**
  * This is the user model class extending UserIdentity.
@@ -233,6 +234,12 @@ class User extends UserIdentity
     /**
      * Generates new password reset token.
      */
+
+    public function getShop()
+    {
+        return $this->hasMany(Shops::className(), ['user_id' => 'id']);
+    }
+
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();

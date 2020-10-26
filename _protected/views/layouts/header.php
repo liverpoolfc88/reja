@@ -3,8 +3,11 @@ use app\models\Viloyats;
 use app\models\TumansShahars;
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\User;
 
 $menu = Viloyats::find()->all();
+$id = Yii::$app->user->identity->id;
+$u = User::find()->where(['id'=>$id])->one();
 //var_dump($childmenu); die();
 ?>
 
@@ -136,7 +139,7 @@ $menu = Viloyats::find()->all();
             <span></span>
             <span></span>
         </button>
-        <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+        <a class="navbar-brand text-brand" href="<?=Url::home()?>">Estate<span class="color-b">Agency</span></a>
         <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
             <span class="fa fa-search" aria-hidden="true"></span>
         </button>
@@ -170,7 +173,10 @@ $menu = Viloyats::find()->all();
                     </li>
                 <?} else{?>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="<?=Url::to(['/boshqaruv/index'])?>">Boshqaruv</a>
+
+                         <a class="nav-link" target="_blank" href="<?=Url::to(['boshqaruv/index'])?>">Boshqaruv</a>
+<!--                           <a class="nav-link" target="_blank" href="--><?//=Url::to(['boshqaruv/shopcreate'])?><!--">Boshqaruv</a>-->
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-method="post" href="<?=Url::to(['/site/logout'])?>">logout</a>

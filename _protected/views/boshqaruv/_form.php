@@ -28,7 +28,7 @@ $controlleraction = Yii::$app->controller->action->id;
 
 <!--            --><?//= $form->field($model, 'views')->textInput() ?>
 
-            <?=($controlleraction != 'update')?$form->field($model, 'slug')->textInput(['maxlength' => true]):'' ?>
+<!--            --><?//=($controlleraction != 'update')?$form->field($model, 'slug')->textInput(['maxlength' => true]):'' ?>
 
         </div>
         <div class="col-md-6">

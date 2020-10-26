@@ -36,6 +36,16 @@ class BoshqaruvController extends Controller
      *
      * @return array
      */
+    public function beforeAction($action)
+    {
+
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        return parent::beforeAction($action);
+
+    }
     public function behaviors()
     {
         return [
@@ -105,6 +115,11 @@ class BoshqaruvController extends Controller
         }
     }
 
+    public function actionShopcreate(){
+
+        return $this->render('shopcreate');
+    }
+
 
     public function actionCreate()
     {
@@ -115,11 +130,11 @@ class BoshqaruvController extends Controller
             $shops = Shops::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
 
             $model->tuman_shahar_id = $shops->tumans_shahars_id;
+            $model->slug = strtolower(str_replace(" ","&".time().'&',$model->name));
+//            $model->slug = strtolower(count_chars($model->name,3));
             $model->shop_id = $shops->id;
             $model->user_id = Yii::$app->user->identity->id;
-
             $model->save();
-
             return $this->redirect(['index']);
         }
 
