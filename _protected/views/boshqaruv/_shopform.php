@@ -34,7 +34,7 @@ $controlleraction = Yii::$app->controller->action->id;
 
 <!--            --><?//= $form->field($model, 'views')->textInput() ?>
 
-            <?= $form->field($model, 'status')->textInput() ?>
+<!--            --><?//= $form->field($model, 'status')->textInput() ?>
 
             <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
 

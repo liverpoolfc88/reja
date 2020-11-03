@@ -64,6 +64,9 @@ $user = Yii::$app->user->identity;
                     </div>
                 </div>
             </div>
+            <? if ($shops->status == 0): ?>
+            <div class="alert alert-info" role="alert">Xurmatli foydalanuvchi! Admin sizning do'koningiz va maxsulotlaringizni faol qilmagunicha ular tizimda ko'rinmaydi, adminga murojaat qiling! </div>
+            <? endif; ?>
             <div class="row">
                 <div class="padbut col-md-6 col-lg-3">
                     <img src="/themes/assets/img/agent-4.jpg" alt="" class="img-fluid">
@@ -92,7 +95,7 @@ $user = Yii::$app->user->identity;
                                 <span class="color-text-a"><?=$shops->youtube_link?></span>
                             </li>
                         </ul>
-                            <a  href="<?=Url::to(['create']);?>">
+                            <a  href="<?=Url::to(['shopupdate','id'=>$shops->id]);?>">
                                 <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </button>
@@ -126,7 +129,7 @@ $user = Yii::$app->user->identity;
                                 <span class="color-text-a"><?=$shops->youtube_link?></span>
                             </li>
                         </ul>
-                        <a  href="<?=Url::to(['create']);?>">
+                        <a  href="<?=Url::to(['userupdate','id'=>$user->id]);?>">
                             <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </button>

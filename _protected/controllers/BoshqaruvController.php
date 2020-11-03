@@ -123,12 +123,30 @@ class BoshqaruvController extends Controller
 
             $model->user_id = Yii::$app->user->identity->id;
             $model->slug = strtolower(str_replace(" ","",$model->name.time()));
+            $model->status = 1;
             $model->save();
             return $this->redirect(['index']);
         }
         return $this->render('shopcreate',[
             'model' =>$model
         ]);
+    }
+    public function actionShopupdate($id)
+    {
+        $model = $this->findShopmodel($id);
+
+        if ($model->user_id == Yii::$app->user->identity->id){
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            }
+
+            return $this->render('shopupdate', [
+                'model' => $model,
+            ]);
+
+        }
+        return $this->redirect(['index']);
     }
 
 
@@ -189,6 +207,15 @@ class BoshqaruvController extends Controller
     protected function findModel($id)
     {
         if (($model = ShopItems::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findShopmodel($id)
+    {
+        if (($model = Shops::findOne($id)) !== null) {
             return $model;
         }
 
