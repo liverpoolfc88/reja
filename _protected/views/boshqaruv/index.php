@@ -140,45 +140,31 @@ $user = Yii::$app->user->identity;
             </div>
         </div>
     </div>
-
 </section>
-<section class="intro-single">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-lg-8">
-                <div class="title-single-box">
-                    <h1 class="title-single">Our Amazing Posts</h1>
-                    <span class="color-text-a">Maxsulot qo'shish
-                            <a  href="<?=Url::to(['create']);?>"><button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button> </a>
-                    </span>
-                </div>
-            </div>
-
-        </div>
-    </div>
+<section>
+    <hr>
 </section>
 
 <section class="news-grid grid">
     <div style="padding: 0px 50px" class="">
         <div class="row">
-            <div class="col-md-3">
-                <div class="media">
-                    <img style="border-radius: 50px" src="/themes/assets/img/mini-testimonial-2.jpg" class="align-self-start mr-3" alt="...">
-                    <a href="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Top-aligned media</h5>
-                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante .</p>
+            <?=Yii::$app->controller->renderPartial("//layouts/left_telegram_list")?>
+            <div class="col-md-12 col-lg-9">
+                <div class="intro-single">
+                    <div class="title-single-box">
+                        <h1 class="title-single"><?=$user->username?><i>ning maxsulotlar!</i></h1>
+                        <span class="color-text-a">Maxsulot qo'shish
+                                <a  href="<?=Url::to(['create']);?>"><button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button> </a>
+                            </span>
                     </div>
-                    </a>
                 </div>
-            </div>
-            <div class="col-md-9">
                 <div class="row">
                 <? foreach ($shopitem as $key=>$item): ?>
                     <div class="col-md-3 col-lg-3 col-sm-6">
                         <div class="card-box-b card-shadow news-box">
                             <div class="img-box-b">
-                                <img src="/themes/assets/img/post-1.jpg" alt="" class="img-b img-fluid">
+<!--                                --><?// var_dump($item->photo); die();   ?>
+                                <img src="/<?=$item->photo?>" alt="" class="img-b img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-header-b">
@@ -203,7 +189,6 @@ $user = Yii::$app->user->identity;
                 <? endforeach;?>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

@@ -21,6 +21,7 @@ use function GuzzleHttp\Promise\all;
 use yii\web\Response;
 use yii\data\Pagination;
 use app\models\ShopItems;
+use yii\web\UploadedFile;
 
 
 
@@ -38,6 +39,9 @@ class BoshqaruvController extends Controller
      */
     public function beforeAction($action)
     {
+        $id = Yii::$app->user->identity->id;
+        $u = User::find()->where(['id'=>$id])->one();
+        $shop = $u->shop;
 
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -94,26 +98,27 @@ class BoshqaruvController extends Controller
 
     public function actionIndex()
     {
+        $id = Yii::$app->user->identity->id;
+        $u = User::find()->where(['id'=>$id])->one();
+        $shop = $u->shop;
+        if (!empty($shop)){
 
-        $shops = Shops::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
-        $shopitem = ShopItems::find()->where(['shop_id'=>$shops->id])->all();
+            $shops = Shops::find()->where(['user_id'=>$id])->one();
+            $shopitem = ShopItems::find()->where(['shop_id'=>$shops->id])->all();
 
-        return $this->render('index', [
-            'shops' => $shops,
-            'shopitem'=> $shopitem
-        ]);
+//            var_dump($shopitem); die();
 
-    }
-
-    public function actionProfile()
-    {
-        if (!Yii::$app->user->isGuest){
-            $user = Yii::$app->user->identity->id;
-            $model = ShopItems::find()->where(['user_id'=>$user])->one();
-//            $shop = Shops::find()->where(['id'=>$model->])->one();
-//            var_dump($model); die();
+            return $this->render('index', [
+                'shops' => $shops,
+                'shopitem'=> $shopitem
+            ]);
         }
+
+        return $this->actionShopcreate();
+
     }
+
+
 
     public function actionShopcreate(){
 
@@ -123,7 +128,7 @@ class BoshqaruvController extends Controller
 
             $model->user_id = Yii::$app->user->identity->id;
             $model->slug = strtolower(str_replace(" ","",$model->name.time()));
-            $model->status = 1;
+            $model->status = 0;
             $model->save();
             return $this->redirect(['index']);
         }
@@ -131,6 +136,25 @@ class BoshqaruvController extends Controller
             'model' =>$model
         ]);
     }
+
+    public function actionUserupdate($id)
+    {
+        $model = $this->findUsermodel($id);
+
+        if ($model->id == Yii::$app->user->identity->id){
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            }
+
+            return $this->render('userupdate', [
+                'model' => $model,
+            ]);
+
+        }
+        return $this->redirect(['index']);
+    }
+
     public function actionShopupdate($id)
     {
         $model = $this->findShopmodel($id);
@@ -156,10 +180,28 @@ class BoshqaruvController extends Controller
 
         if ($model->load(Yii::$app->request->post()) ) {
 
+            function rasm($model,$qiymat){
+                $file = UploadedFile::getInstance($model, $qiymat);
+                if (isset($file))
+                {
+                    $filename = uniqid() . '.' . $file->extension;
+                    $path = 'uploads/item';
+                    if (!file_exists($path)) {
+                        mkdir($path,0777,true);
+                    }
+                    $path = 'uploads/item/' . $filename;
+                    if ($file->saveAs($path))
+                    {
+                        return $path;
+                    }
+                }
+            }
+            $model->photo = rasm($model, 'photo');
+
             $shops = Shops::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
 
             $model->tuman_shahar_id = $shops->tumans_shahars_id;
-            $model->slug = strtolower(str_replace(" ","",$model->name.time()));
+            $model->slug = strtolower(str_replace(" ","-",$model->name.time()));
 //            $model->slug = strtolower(count_chars($model->name,3));
             $model->shop_id = $shops->id;
             $model->user_id = Yii::$app->user->identity->id;
@@ -216,6 +258,15 @@ class BoshqaruvController extends Controller
     protected function findShopmodel($id)
     {
         if (($model = Shops::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findUsermodel($id)
+    {
+        if (($model = User::findOne($id)) !== null) {
             return $model;
         }
 

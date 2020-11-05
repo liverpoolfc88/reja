@@ -26,7 +26,7 @@ class AppAsset extends AssetBundle
         "/themes/assets/vendor/bootstrap/css/bootstrap.min.css" ,
         'css/style.css',
         "/themes/assets/vendor/ionicons/css/ionicons.min.css" ,
-        "/themes/assets/vendor/boxicons/css/boxicons.min.css" ,
+//        "/themes/assets/vendor/boxicons/css/boxicons.min.css" ,
         "/themes/assets/vendor/animate.css/animate.min.css" ,
         "/themes/assets/vendor/font-awesome/css/font-awesome.min.css" ,
         "/themes/assets/vendor/owl.carousel/assets/owl.carousel.min.css" ,

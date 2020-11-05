@@ -43,7 +43,7 @@ class ShopItems extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'tuman_shahar_id', 'shop_id', 'user_id', 'title', 'slug', 'status'], 'required'],
+            [['name', 'tuman_shahar_id', 'shop_id', 'user_id', 'price', 'slug', 'status'], 'required'],
             [['tuman_shahar_id', 'shop_id', 'user_id', 'views', 'status', 'price', 'sale'], 'integer'],
             [['slug'], 'unique'],
             [['created_date', 'updated_date'], 'safe'],
