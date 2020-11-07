@@ -75740,3 +75740,65 @@ $_SERVER = [
     'argv' => []
     'argc' => 0
 ]
+2020-11-07 13:59:28 [127.0.0.1][3][-][warning][yii\i18n\PhpMessageSource::loadMessages] The message file for category 'yii' does not exist: D:\OSPanel\domains\rejam\_protected/translations/uz/yii.php
+    in D:\OSPanel\domains\rejam\_protected\views\layouts\main.php:52
+    in D:\OSPanel\domains\rejam\_protected\controllers\BoshqaruvController.php:113
+2020-11-07 13:59:28 [127.0.0.1][3][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity' => '73aab127d7be17bf76fb58380d45842efddd96b63e915e7345b4f5eeffd481daa:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[3,\"CzcBjxXuk_7l21eXwE7lsFsP-Isg-mwm\",2592000]\";}'
+    'PHPSESSID' => 'ptsfiliu0aedekdoteb24r5gt0vfug2e'
+    '_csrf' => 'd5a485c540348b83d2e2899d981c14d1a336014e19bf4eb7bfeba6c849bb5bdda:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"eK4f-HAzWFlfbLH9Zvpx5eQheyj-EHMM\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 3
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'reja.uz'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
+    'HTTP_REFERER' => 'http://reja.uz/'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,la;q=0.6,uz;q=0.5'
+    'HTTP_COOKIE' => '_identity=73aab127d7be17bf76fb58380d45842efddd96b63e915e7345b4f5eeffd481daa%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B3%2C%22CzcBjxXuk_7l21eXwE7lsFsP-Isg-mwm%22%2C2592000%5D%22%3B%7D; PHPSESSID=ptsfiliu0aedekdoteb24r5gt0vfug2e; _csrf=d5a485c540348b83d2e2899d981c14d1a336014e19bf4eb7bfeba6c849bb5bdda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22eK4f-HAzWFlfbLH9Zvpx5eQheyj-EHMM%22%3B%7D'
+    'PATH' => 'd:\\ospanel\\modules\\php\\PHP_7.2-x64\\ext;d:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear;d:\\ospanel\\modules\\php\\PHP_7.2-x64\\pear\\bin;d:\\ospanel\\modules\\php\\PHP_7.2-x64;d:\\ospanel\\modules\\wget\\bin;d:\\ospanel\\modules\\database\\MariaDB-10.3-x64\\bin;d:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.0-7.1-x64\\bin;d:\\ospanel\\modules\\http\\Apache_2.4-PHP_7.0-7.1-x64;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'reja.uz'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'D:/OSPanel/domains/rejam'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/OSPanel/domains/rejam'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'D:/OSPanel/domains/rejam/index.php'
+    'REMOTE_PORT' => '59111'
+    'REDIRECT_URL' => '/boshqaruv/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/boshqaruv/index'
+    'SCRIPT_NAME' => '/index.php'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1604746768.471
+    'REQUEST_TIME' => 1604746768
+    'argv' => []
+    'argc' => 0
+]
