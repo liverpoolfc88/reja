@@ -64,38 +64,38 @@ $user = Yii::$app->user->identity;
                     </div>
                 </div>
             </div>
-            <? if ($shops->status == 0): ?>
+            <? if ($shop->status == 0): ?>
             <div class="alert alert-info" role="alert">Xurmatli foydalanuvchi! Admin sizning do'koningiz va maxsulotlaringizni faol qilmagunicha ular tizimda ko'rinmaydi, adminga murojaat qiling! </div>
             <? endif; ?>
             <div class="row">
                 <div class="padbut col-md-6 col-lg-3">
-                    <img src="/themes/assets/img/agent-4.jpg" alt="" class="img-fluid">
+                    <img src="/<?=$shop->photo?>" alt="" class="img-fluid">
                 </div>
                 <div class="padbut col-md-6 col-lg-3">
                     <div class="property-agent">
-                        <h4 class="title-agent"><?=$shops->name?></h4>
+                        <h4 class="title-agent"><?=$shop->name?></h4>
                         <p class="color-text-a">
-                            <?=$shops->text?>
+<!--                            --><?//=$shop->text?>
                         </p>
                         <ul class="list-unstyled">
                             <li class="d-flex justify-content-between">
                                 <strong>Phone:</strong>
-                                <span class="color-text-a"><?=$shops->tel?></span>
+                                <span class="color-text-a"><?=$shop->tel?></span>
                             </li>
                             <li class="d-flex justify-content-between">
                                 <strong>Telegram:</strong>
-                                <span class="color-text-a"><?=$shops->telegram?></span>
+                                <span class="color-text-a"><?=$shop->telegram?></span>
                             </li>
                             <li class="d-flex justify-content-between">
                                 <strong>Locatsiya:</strong>
-                                <span class="color-text-a"><?=$shops->location?></span>
+                                <span class="color-text-a"><?=$shop->location?></span>
                             </li>
                             <li class="d-flex justify-content-between">
                                 <strong>video:</strong>
-                                <span class="color-text-a"><?=$shops->youtube_link?></span>
+                                <span class="color-text-a"><?=$shop->youtube_link?></span>
                             </li>
                         </ul>
-                            <a  href="<?=Url::to(['shopupdate','id'=>$shops->id]);?>">
+                            <a  href="<?=Url::to(['shopupdate','id'=>$shop->id]);?>">
                                 <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </button>
@@ -103,13 +103,13 @@ $user = Yii::$app->user->identity;
                     </div>
                 </div>
                 <div class="padbut col-md-6 col-lg-3">
-                    <img src="/themes/assets/img/agent-5.jpg" alt="" class="img-fluid">
+                    <img src="/<?=$user->photo?>" alt="" class="img-fluid">
                 </div>
                 <div class="padbut col-md-6 col-lg-3">
                     <div class="property-agent">
                         <h4 class="title-agent"><?=$user->username?></h4>
                         <p class="color-text-a">
-                            <?=$shops->text?>
+<!--                            --><?//=$shop->text?>
                         </p>
                         <ul class="list-unstyled">
                             <li class="d-flex justify-content-between">
@@ -118,15 +118,15 @@ $user = Yii::$app->user->identity;
                             </li>
                             <li class="d-flex justify-content-between">
                                 <strong>Telegram:</strong>
-                                <span class="color-text-a"><?=$shops->telegram?></span>
+                                <span class="color-text-a"><?=$shop->telegram?></span>
                             </li>
                             <li class="d-flex justify-content-between">
                                 <strong>Locatsiya:</strong>
-                                <span class="color-text-a"><?=$shops->location?></span>
+                                <span class="color-text-a"><?=$shop->location?></span>
                             </li>
                             <li class="d-flex justify-content-between">
                                 <strong>video:</strong>
-                                <span class="color-text-a"><?=$shops->youtube_link?></span>
+                                <span class="color-text-a"><?=$shop->youtube_link?></span>
                             </li>
                         </ul>
                         <a  href="<?=Url::to(['userupdate','id'=>$user->id]);?>">
@@ -164,7 +164,7 @@ $user = Yii::$app->user->identity;
                         <div class="card-box-b card-shadow news-box">
                             <div class="img-box-b">
 <!--                                --><?// var_dump($item->photo); die();   ?>
-                                <img src="/<?=$item->photo?>" alt="" class="img-b img-fluid">
+                                <img style="height: 300px" src="/<?=$item->photo?>" alt="" class="img-b img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-header-b">
@@ -173,14 +173,22 @@ $user = Yii::$app->user->identity;
                                     </div>
                                     <div class="card-title-b">
                                         <h2 class="title-2">
-                                            <a href="blog-single.html"><?=$item->name ?>
+                                            <a href="blog-single.html"><?=$item->name?>
                                                 <br></a>
                                             <span class="date-b"><?=($item->updated_date)?$item->updated_date:$item->created_date ?></span>
                                         </h2>
                                     </div>
                                     <div class="card-date">
                                         <!--                                <a href="--><?//=Url::to(['delete','id'=>$item->id])?><!--" style="background-color: white" class="category-b"><span style="color: red" class="fa fa-trash" aria-hidden="true"> </span></a>-->
-                                        <a href="<?=Url::to(['delete','id'=>$item->id]);?>"style="background-color: white" class="category-b title="Delete" aria-label="Delete" data-pjax="0" data-confirm="Ushbu bo`lim o`chirib tashlansinmi?" data-method="post"><span style="color: red" class="fa fa-trash" aria-hidden="true"></span></a>
+                                        <? if  ($item->status == 0) { ?>
+                                        <a href="<?=Url::to(['delete','id'=>$item->id])?> "title="o`chirish" aria-label="Delete" data-pjax="0"
+                                           data-confirm="Ushbu bo`lim o`chirib tashlansinmi?" data-method="post">
+                                            <span style="color: red; font-size: 150%" class="fa fa-trash" aria-hidden="true"> <span style="color: white; font-size: 70%">(statusi o`chik)</span></span></a>
+                                       <?} else { ?>
+                                        <a href="<?=Url::to(['delete','id'=>$item->id])?> "title="o`chirish" aria-label="Delete" data-pjax="0"
+                                           data-confirm="Ushbu bo`lim o`chirib tashlansinmi?" data-method="post">
+                                            <span style="color: red; font-size: 150%" class="fa fa-trash" aria-hidden="true"> </span></a>
+                                            <? } ?>
                                     </div>
                                 </div>
                             </div>

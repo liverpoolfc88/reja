@@ -132,7 +132,7 @@ $u = User::find()->where(['id'=>$id])->one();
 
 <!-- ======= Header/Navbar ======= -->
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span></span>
             <span></span>
@@ -146,7 +146,7 @@ $u = User::find()->where(['id'=>$id])->one();
             <ul class="navbar-nav">
                 <? foreach ($menu  as $key=>$m):?>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?=$m->name?>
                     </a>
                     <?$child = TumansShahars::find()->where(['viloyat_id'=>$m->id])->all()?>

@@ -6,6 +6,7 @@ $controlleraction = Yii::$app->controller->action->id;
 /* @var $this yii\web\View */
 /* @var $model app\models\ShopItems */
 /* @var $form yii\widgets\ActiveForm */
+//var_dump($count); die();
 ?>
 
 <div style="padding-top: 50px" class="shop-items-form">
@@ -18,11 +19,16 @@ $controlleraction = Yii::$app->controller->action->id;
 
             <?
             $items=[
-                1=>'Tizimda ko`rinsin',
                 0=>'Tizimda ko`rinmasin',
+                1=>'Tizimda ko`rinsin',
             ];?>
 
-            <?= $form->field($model, 'status')->dropDownList($items)->label('Status') ?>
+            <?=($count == 8)
+                ? $form->field($model, 'status')->dropDownList($items, ['disabled' => true])
+                    ->label('Tizimda faqat 8 ta maxsulotingiz ko`rinadi')
+                : $form->field($model, 'status')->dropDownList($items)->label('Status') ?>
+
+<!--            --><?//=$form->field($model, 'status')->dropDownList($items, ['disabled' => true])->label('Status')?>
 
 <!--            --><?//= $form->field($model, 'tuman_shahar_id')->textInput() ?>
 

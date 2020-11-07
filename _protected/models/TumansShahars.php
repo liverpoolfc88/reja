@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tumans_shahars".
@@ -130,5 +131,9 @@ class TumansShahars extends \yii\db\ActiveRecord
             $this->update_date = date('Y-m-d');
         }
         return parent::beforeSave($insert);
+    }
+
+    public static function Menu(){
+        return ['0'=>'---tanlang---'] + ArrayHelper::map(self::find()->all(), 'id', 'name');
     }
 }

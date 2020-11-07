@@ -103,13 +103,13 @@ class BoshqaruvController extends Controller
         $shop = $u->shop;
         if (!empty($shop)){
 
-            $shops = Shops::find()->where(['user_id'=>$id])->one();
-            $shopitem = ShopItems::find()->where(['shop_id'=>$shops->id])->all();
+            $shop = $this->idid();
+            $shopitem = ShopItems::find()->where(['shop_id'=>$shop->id])->all();
 
 //            var_dump($shopitem); die();
 
             return $this->render('index', [
-                'shops' => $shops,
+                'shop' => $shop,
                 'shopitem'=> $shopitem
             ]);
         }
@@ -126,8 +126,26 @@ class BoshqaruvController extends Controller
 
         if ($model->load(Yii::$app->request->post()) ){
 
+            function rasm($model,$qiymat){
+                $file = UploadedFile::getInstance($model, $qiymat);
+                if (isset($file))
+                {
+                    $filename = uniqid() . '.' . $file->extension;
+                    $path = 'uploads/shop';
+                    if (!file_exists($path)) {
+                        mkdir($path,0777,true);
+                    }
+                    $path = 'uploads/shop/' . $filename;
+                    if ($file->saveAs($path))
+                    {
+                        return $path;
+                    }
+                }
+            }
+            $model->photo = rasm($model, 'photo');
+
             $model->user_id = Yii::$app->user->identity->id;
-            $model->slug = strtolower(str_replace(" ","",$model->name.time()));
+            $model->slug = strtolower(str_replace(" ","&",$model->name.time()));
             $model->status = 0;
             $model->save();
             return $this->redirect(['index']);
@@ -141,9 +159,37 @@ class BoshqaruvController extends Controller
     {
         $model = $this->findUsermodel($id);
 
+        $model2 = clone $model;
+
         if ($model->id == Yii::$app->user->identity->id){
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post()) ) {
+                function qayta($model,$rasm, $model2){
+                    $file = UploadedFile::getInstance($model, $rasm);
+                    if ($model2->photo==null || $file!=null) {
+                        if (isset($file))
+                        {
+                            $filename = uniqid() . '.' . $file->extension;
+                            $path = 'uploads/user/' . $filename;
+                            $path2 = 'uploads/user/' . $model2->photo;
+
+                            if (is_file($path2)) {
+                                @unlink($path2);
+                            }
+                            if ($file->saveAs($path))
+                            {
+                                return $path;
+                            }
+                        }
+                        else return $model2->photo;
+                    }
+                    else return $model2->photo;
+                }
+
+                $model->photo = qayta($model, 'photo', $model2);
+
+                $model->save();
+
                 return $this->redirect(['index']);
             }
 
@@ -159,9 +205,39 @@ class BoshqaruvController extends Controller
     {
         $model = $this->findShopmodel($id);
 
+        $model2 = clone $model;
+
         if ($model->user_id == Yii::$app->user->identity->id){
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+
+                function qayta($model,$rasm, $model2){
+                    $file = UploadedFile::getInstance($model, $rasm);
+                    if ($model2->photo==null || $file!=null) {
+                        if (isset($file))
+                        {
+                            $filename = uniqid() . '.' . $file->extension;
+                            $path = 'uploads/shop/' . $filename;
+                            $path2 = 'uploads/shop/' . $model2->photo;
+
+                            if (is_file($path2)) {
+                                @unlink($path2);
+                            }
+                            if ($file->saveAs($path))
+                            {
+                                return $path;
+                            }
+                        }
+                        else return $model2->photo;
+                    }
+                    else return $model2->photo;
+                }
+
+                $model->photo = qayta($model, 'photo', $model2);
+
+                $model->save();
+
+
                 return $this->redirect(['index']);
             }
 
@@ -197,30 +273,79 @@ class BoshqaruvController extends Controller
                 }
             }
             $model->photo = rasm($model, 'photo');
-
-            $shops = Shops::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
-
-            $model->tuman_shahar_id = $shops->tumans_shahars_id;
-            $model->slug = strtolower(str_replace(" ","-",$model->name.time()));
-//            $model->slug = strtolower(count_chars($model->name,3));
-            $model->shop_id = $shops->id;
+            $model->tuman_shahar_id = $this->idid()->tumans_shahars_id;
+            $model->slug = strtolower(str_replace(" ","",$model->name.time()));
+            $model->shop_id = $this->idid()->id;
             $model->user_id = Yii::$app->user->identity->id;
+
+
+            ($this->count() == 8)? $model->status = 0: $model->status = 1;
             $model->save();
             return $this->redirect(['index']);
         }
+        $count = $this->count();
 
         return $this->render('create', [
             'model' => $model,
+            'count' => $this->count()
+
         ]);
     }
+
+    //qowimcha funksiyalar
+
+    public function count(){
+        $count = ShopItems::find()
+            ->where(['status'=>1])
+            ->andWhere(['shop_id'=>$this->idid()->id])
+            ->all();
+        $count = count($count);
+        return $count;
+    }
+
+    public function idid(){
+        $shops = Shops::find()->where(['user_id'=>Yii::$app->user->identity->id])->one();
+        return $shops;
+    }
+
+    //qowimcha funksiyalar
+
 
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
+        $model2 = clone $model;
+
         if ($model->user_id == Yii::$app->user->identity->id){
 
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if ($model->load(Yii::$app->request->post())) {
+                function qayta($model,$rasm, $model2){
+                    $file = UploadedFile::getInstance($model, $rasm);
+                    if ($model2->photo==null || $file!=null) {
+                        if (isset($file))
+                        {
+                            $filename = uniqid() . '.' . $file->extension;
+                            $path = 'uploads/item/' . $filename;
+                            $path2 = 'uploads/item/' . $model2->photo;
+
+                            if (is_file($path2)) {
+                                @unlink($path2);
+                            }
+                            if ($file->saveAs($path))
+                            {
+                                return $path;
+                            }
+                        }
+                        else return $model2->photo;
+                    }
+                    else return $model2->photo;
+                }
+
+                $model->photo = qayta($model, 'photo', $model2);
+
+                $model->save();
+
                 return $this->redirect(['index']);
             }
 
@@ -271,6 +396,21 @@ class BoshqaruvController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionList_tuman($id)
+    {
+        $this->enableCsrfValidation = false;
+        $count = TumansShahars::find()->where(['viloyat_id' => $id])->count();
+//        var_dump($countdepartment); die();
+        $tuman = TumansShahars::find()->where(['viloyat_id' => $id])->orderBy('id DESC')->all();
+        if($count > 0)
+        {
+            echo "<option>Tuman yoki shaxarni tanlang ...</option>";
+            foreach($tuman as $result) echo "<option value='".$result->id."'>".$result->name."</option>";
+        } else {
+            echo "<option>-</option>";
+        }
     }
 
 

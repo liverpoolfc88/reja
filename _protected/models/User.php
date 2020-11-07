@@ -47,6 +47,10 @@ class User extends UserIdentity
      *
      * @return array
      */
+
+    public $viloyat_id;
+//    public $tumans_shahars_id;
+
     public function rules()
     {
         return [
@@ -62,6 +66,8 @@ class User extends UserIdentity
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
+            [['viloyat_id'], 'safe'],
+            [['tumans_shahars_id'], 'safe'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 
@@ -126,6 +132,7 @@ class User extends UserIdentity
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'item_name' => Yii::t('app', 'Role'),
+            'tumans_shahars_id' => Yii::t('app', 'Tuman & shahar'),
         ];
     }
 

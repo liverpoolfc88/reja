@@ -33,6 +33,8 @@ class Shops extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+
     public static function tableName()
     {
         return 'shops';
@@ -41,14 +43,19 @@ class Shops extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $viloyat_id;
+
     public function rules()
     {
         return [
-            [['name', 'user_id', 'tumans_shahars_id', 'text', 'slug', 'status'], 'required'],
+            [['name', 'user_id', 'tumans_shahars_id',  'slug', 'status'], 'required', 'message'=>'bo`limlarni to`ldiring'],
             [['slug'], 'unique'],
+            [['viloyat_id'], 'safe'],
             [['user_id', 'tumans_shahars_id', 'views', 'status'], 'integer'],
             [['create_date', 'update_date'], 'safe'],
             [['name', 'photo', 'short', 'text', 'slug', 'location', 'youtube_link'], 'string', 'max' => 255],
+            [['photo'],'file','extensions' => 'png, jpg'],
+//            [['photo'],'required','message'=>'Rasm tanlash majburiy'],
             [['tel'], 'string', 'max' => 25],
             [['telegram'], 'string', 'max' => 128],
             [['tumans_shahars_id'], 'exist', 'skipOnError' => true, 'targetClass' => TumansShahars::className(), 'targetAttribute' => ['tumans_shahars_id' => 'id']],

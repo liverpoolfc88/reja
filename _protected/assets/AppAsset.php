@@ -34,7 +34,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
-        "/themes/assets/vendor/jquery/jquery.min.js",
+//        "/themes/assets/vendor/jquery/jquery.min.js",
         "/themes/assets/vendor/bootstrap/js/bootstrap.bundle.min.js",
         "/themes/assets/vendor/jquery.easing/jquery.easing.min.js",
         "/themes/assets/vendor/php-email-form/validate.js",

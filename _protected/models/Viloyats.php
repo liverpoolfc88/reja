@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "viloyats".
@@ -59,6 +60,10 @@ class Viloyats extends \yii\db\ActiveRecord
     public function getTumansShahars()
     {
         return $this->hasMany(TumansShahars::className(), ['viloyat_id' => 'id']);
+    }
+
+    public static function Menu(){
+        return ['0'=>'---tanlang---'] + ArrayHelper::map(self::find()->all(), 'id', 'name');
     }
 
     public function beforeSave($insert){
