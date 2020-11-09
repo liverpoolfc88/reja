@@ -53,6 +53,47 @@ $user = Yii::$app->user->identity;
     .intro-single {
         padding: 2rem 0 3rem;
     }
+
+    /*link uchun*/
+
+     .tooltip {
+         position: relative;
+         display: inline-block;
+     }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
 </style>
 <section>
     <div class="container">
@@ -60,7 +101,7 @@ $user = Yii::$app->user->identity;
             <div class="row section-t3">
                 <div class="col-sm-12">
                     <div class="title-box-d">
-                        <h3 class="title-d">Contact Agent</h3>
+                        <h3 class="title-d"><?=$shop->name?> do`koni haqida ma`lumotlar</h3>
                     </div>
                 </div>
             </div>
@@ -95,7 +136,7 @@ $user = Yii::$app->user->identity;
                                 <span class="color-text-a"><?=$shop->youtube_link?></span>
                             </li>
                         </ul>
-                            <a  href="<?=Url::to(['shopupdate','id'=>$shop->id]);?>">
+                            <a href="<?=Url::to(['shopupdate','id'=>$shop->id]);?>">
                                 <button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </button>
@@ -151,11 +192,43 @@ $user = Yii::$app->user->identity;
             <?=Yii::$app->controller->renderPartial("//layouts/left_telegram_list")?>
             <div class="col-md-12 col-lg-9">
                 <div class="intro-single">
-                    <div class="title-single-box">
-                        <h1 class="title-single"><?=$user->username?><i>ning maxsulotlar!</i></h1>
-                        <span class="color-text-a">Maxsulot qo'shish
-                                <a  href="<?=Url::to(['create']);?>"><button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button> </a>
-                            </span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-single-box">
+                                <h1 class="title-single"><?=$user->username?><i>ning maxsulotlar!</i></h1>
+                                <span class="color-text-a">Maxsulot qo'shish
+                                        <a  href="<?=Url::to(['create']);?>"><button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button> </a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="title-single-box">
+                                <h1 class="title-single"><i class="fa fa-telegram"> Kanalingizgaga linkni joylang!</i></h1>
+
+
+                                    <div class="row" >
+                                        <div style="padding-top: 10px" class="col-md-8">
+                                        <input  class="form-control" type="text" value="<?=$_SERVER['HTTP_REFERER']?>" id="myInput">
+                                        </div>
+                                        <div style="padding-top: 10px" class="col-md-4">
+                                            <button  class=" w3-round-xxlarge w3-button w3-green" onclick="myFunction()" onmouseout="outFunc()">
+                                                Nusxa olish
+                                            </button>
+                                        </div>
+                                    </div>
+
+
+
+<!--                                        <div class="tooltip">-->
+<!--                                            <button style="background-color: #00c054" onclick="myFunction()" onmouseout="outFunc()">-->
+<!--                                              <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>-->
+<!--                                              Copy text-->
+<!--                                             </button>-->
+<!--                                        </div>-->
+<!--                                        <a  href="--><?//=Url::to(['create']);?><!--"><button class="w3-button w3-xlarge w3-circle w3-red w3-card-4">+</button> </a>-->
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -201,7 +274,22 @@ $user = Yii::$app->user->identity;
     </div>
 </section>
 
+<script>
+    function myFunction() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
 
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied: " + copyText.value;
+    }
+
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+    }
+</script>
 
 
 <!--<section style="padding-top: 20px ">-->

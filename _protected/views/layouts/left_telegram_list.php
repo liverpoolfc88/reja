@@ -1,5 +1,5 @@
 <div class="col-md-12 col-lg-3">
-    <div class="intro-single">
+    <div style="padding-top: 30px" class="intro-single">
         <div class="title-single-box">
             <h1 class="title-single">Telegram kanallar!</h1>
             <p><span class="color-text-a">Maxsulot qo'shish</span></p>
