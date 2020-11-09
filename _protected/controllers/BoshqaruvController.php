@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\models\Request;
 use app\models\Shops;
 use app\models\TumansShahars;
 use app\models\User;
@@ -413,7 +414,12 @@ class BoshqaruvController extends Controller
         }
     }
 
+    public function actionUrl(){
+        $this->enableCsrfValidation = false;
 
+
+
+    }
 
 
 }

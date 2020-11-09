@@ -7,7 +7,8 @@
                 <div class="title-single-box">
                     <h1 class="title-single"><?=$shop->name?></h1>
                     <p id="demo"></p>
-                    <span class="color-text-a"><a href="" target="_blank"><p id="demo"></p></a> </span>
+                    <span class="color-text-a"><a href="" target="_blank">
+                            <p id="demo"></p></a> </span>
                 </div>
             </div>
             <div class="col-md-12 col-lg-4">
@@ -105,7 +106,17 @@
 
 
 <script>
-    document.getElementById("demo").innerHTML =
+
+    $.ajax({
+        type: "POST",
+        url: '/boshqaruv/url',
+        data: window.location.href,
+        success:  function( data ) {
+            $( ".result" ).html( data );
+        });,
+        dataType: dataType
+    });
+        document.getElementById("demo").innerHTML =
          window.location.href;
 </script>
 
