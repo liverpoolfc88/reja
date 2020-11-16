@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 07 2020 г., 14:00
+-- Время создания: Ноя 16 2020 г., 16:47
 -- Версия сервера: 10.3.13-MariaDB-log
 -- Версия PHP: 7.2.22
 
@@ -39,7 +39,7 @@ CREATE TABLE `auth_assignment` (
 --
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
-('admin', 2, 1603096278),
+('member', 2, 1605180047),
 ('member', 3, 1603096379),
 ('theCreator', 1, 1602674219);
 
@@ -192,9 +192,9 @@ CREATE TABLE `shops` (
 --
 
 INSERT INTO `shops` (`id`, `name`, `user_id`, `tumans_shahars_id`, `photo`, `short`, `text`, `slug`, `views`, `status`, `tel`, `telegram`, `location`, `youtube_link`, `create_date`, `update_date`) VALUES
-(1, 'sport forma', 1, 1, 'uploads/shop/5fa6381ebffd2.jpg', 'sport forma do\'koni', 'liverpooll iverp oollive rpoollive rpool liverpool liverpo olliverpoolli ve r poolliverp oolliverpo ol liverpoolliverpo olliv erpooll i verpoolli verpool', 'sport', 96, 1, '+998979933632', '', '', '', '2020-10-16', '2020-11-07'),
-(3, 'kitoblar', 2, 1, '', 'kitoblaaaaar', 'kitoblaaaaarkitoblaaaaar r kitoblaaaaarkitoblaaaaar dfgdf gfdg dfgfd gfd', 'kitob', 9, 1, '+998901404641', '', '', '', '2020-10-16', '2020-11-06'),
-(6, 'kastim shim', 3, 7, 'uploads/shop/5fa6437f113bb.jpg', 'kastim shim', 'kastim shim', 'kastimshim', 12, 1, '9865sds48574', '', '', '', '2020-10-19', '2020-11-07');
+(1, 'sport forma', 1, 1, 'uploads/shop/5fa6381ebffd2.jpg', 'sport forma do\'koni', 'liverpooll iverp oollive rpoollive rpool liverpool liverpo olliverpoolli ve r poolliverp oolliverpo ol liverpoolliverpo olliv erpooll i verpoolli verpool', 'sport', 111, 1, '+998979933632', '', '', '', '2020-10-16', '2020-11-14'),
+(3, 'kitoblar', 2, 1, 'uploads/shop/5fa901641b675.jpg', 'kitoblaaaaar', 'kitoblaaaaarkitoblaaaaar r kitoblaaaaarkitoblaaaaar dfgdf gfdg dfgfd gfd', 'kitob', 29, 1, '+998901404641', '', '', '', '2020-10-16', '2020-11-14'),
+(6, 'kastim shim', 3, 7, 'uploads/shop/5fa6437f113bb.jpg', 'kastim shim', 'kastim shim', 'kastimshim', 13, 1, '9865sds48574', '', '', '', '2020-10-19', '2020-11-10');
 
 -- --------------------------------------------------------
 
@@ -226,22 +226,22 @@ CREATE TABLE `shop_items` (
 
 INSERT INTO `shop_items` (`id`, `name`, `tuman_shahar_id`, `shop_id`, `user_id`, `title`, `photo`, `short`, `views`, `slug`, `status`, `price`, `sale`, `created_date`, `updated_date`) VALUES
 (1, 'Krasofka', 1, 1, 1, 'Krasofka', 'uploads/item/5fa4cdb9ea357.jpg', '', 2, 'krasofka', 1, 45000, NULL, '2020-10-16', '2020-11-06'),
-(4, 'Ertak kitoblar', 1, 3, 2, 'ertaklar', 'uploads/item/5fa3f4e7759dc.jpg', '', 4, 'ertaklar', 1, 2500, NULL, '2020-10-16', '2020-10-19'),
+(4, 'Ertak kitoblar', 1, 3, 2, 'ertaklar', 'uploads/item/5fa8efba53315.jpg', '', 4, 'ertaklar', 1, 2500, NULL, '2020-10-16', '2020-11-09'),
 (11, 'Futbolka', 1, 1, 1, 'Yozgi futbolka', 'uploads/item/5fa4ce7a3c637.jpg', 'Yozgi futbolka', 5, 'futbolka', 1, 50000, NULL, '2020-10-20', '2020-11-06'),
 (12, 'Spartivka', 1, 1, 1, 'Spartivka', 'uploads/item/5fa4d104cc94d.jpg', '', 9, 'spartivka', 1, 98000, NULL, '2020-10-20', '2020-11-06'),
 (15, 'Futbolka Orginal', 1, 1, 1, 'Futbolka Orginal', 'uploads/item/5fa4d1313477a.jpg', '', 3, 'futbolkas', 1, 90000, NULL, '2020-10-20', '2020-11-06'),
-(17, 'Tarix kitob', 1, 3, 2, 'Tarix kitob', 'uploads/item/5fa3f4e7759dc.jpg', '', NULL, 'tarix-kitob', 1, 25000, NULL, '2020-10-26', NULL),
-(18, 'Adabiyot kitobi', 1, 3, 2, 'Adabiyot kitobi', 'uploads/item/5fa3f4e7759dc.jpg', '', NULL, ' aabdikoty', 1, NULL, NULL, '2020-10-26', NULL),
-(19, 'Adabiyot kitobi', 1, 3, 2, 'Adabiyot kitobi', 'uploads/item/5fa3f4e7759dc.jpg', '', NULL, 'adabiyot- aabdikotykitobi', 1, 3500, NULL, '2020-10-26', NULL),
-(20, 'Iqtisod kitobi', 1, 3, 2, 'Iqtisod kitobi', 'uploads/item/5fa3f4e7759dc.jpg', '', NULL, 'iqtisod&&kitobi', 1, NULL, NULL, '2020-10-26', '2020-10-26'),
-(21, 'Matematika kitobi', 1, 3, 2, 'Matematika kitobi', 'uploads/item/5fa3f4e7759dc.jpg', '', NULL, 'matematika&1603690204&kitobi', 1, 20555, NULL, '2020-10-26', NULL),
-(26, 'Namangan kastim', 7, 6, 3, NULL, 'uploads/item/5fa3f4e7759dc.jpg', '', NULL, 'namangankastim1604580583', 1, 120000, NULL, '2020-11-05', NULL),
+(17, 'Tarix kitob', 1, 3, 2, 'Tarix kitob', 'uploads/item/5fa8efba53315.jpg', '', NULL, 'tarix-kitob', 1, 25000, NULL, '2020-10-26', NULL),
+(18, 'Adabiyot kitobi', 1, 3, 2, 'Adabiyot kitobi', 'uploads/item/5fa8efba53315.jpg', '', NULL, ' aabdikoty', 1, NULL, NULL, '2020-10-26', NULL),
+(19, 'Adabiyot kitobi', 1, 3, 2, 'Adabiyot kitobi', 'uploads/item/5fa8efba53315.jpg', '', NULL, 'adabiyot- aabdikotykitobi', 1, 3500, NULL, '2020-10-26', NULL),
+(20, 'Iqtisod kitobi', 1, 3, 2, 'Iqtisod kitobi', 'uploads/item/5fa8efba53315.jpg', '', NULL, 'iqtisod&&kitobi', 1, NULL, NULL, '2020-10-26', '2020-10-26'),
+(21, 'Matematika kitobi', 1, 3, 2, 'Matematika kitobi', 'uploads/item/5fa8efba53315.jpg', '', NULL, 'matematika&1603690204&kitobi', 1, 20555, NULL, '2020-10-26', NULL),
+(26, 'Namangan kastim', 7, 6, 3, NULL, 'uploads/item/5fa8efba53315.jpg', '', NULL, 'namangankastim1604580583', 1, 120000, NULL, '2020-11-05', NULL),
 (27, 'Anjan kastim', 7, 6, 3, NULL, 'uploads/item/5fa3f4f890cb3.jpg', '', NULL, 'anjankastim1604580600', 1, 150000, NULL, '2020-11-05', NULL),
 (28, 'fargona kastim', 7, 6, 3, NULL, 'uploads/item/5fa3f506d92bd.jpg', '', NULL, 'fargonakastim1604580614', 1, 150000, NULL, '2020-11-05', NULL),
 (30, 'Toshkent kastyum', 7, 6, 3, NULL, 'uploads/item/5fa4bf160ded4.jpg', '', NULL, 'toshkent-kastyum1604632342', 1, 25000, NULL, '2020-11-06', NULL),
 (31, 'Turkiya kastim', 7, 6, 3, NULL, 'uploads/item/5fa4bf362e718.jpg', '', NULL, 'turkiya-kastim1604632374', 1, 25000, NULL, '2020-11-06', NULL),
 (32, 'rus kastim', 7, 6, 3, NULL, 'uploads/item/5fa4bf4d8c60d.jpg', '', NULL, 'rus-kastim1604632397', 1, 25000, NULL, '2020-11-06', NULL),
-(33, 'To\'p', 1, 1, 1, NULL, 'uploads/item/5fa4e13c37009.jpg', '', NULL, 'to\'p1604641084', 1, 50000, NULL, '2020-11-06', NULL),
+(33, 'Top', 1, 1, 1, NULL, 'uploads/item/5fa4e13c37009.jpg', '', NULL, 'top1604641084', 1, 50000, NULL, '2020-11-06', NULL),
 (34, 'sharf', 1, 1, 1, NULL, 'uploads/item/5fa4e1c368658.jpg', '', NULL, 'sharf1604641219', 1, 25000, NULL, '2020-11-06', NULL),
 (35, 'Kepka', 1, 1, 1, NULL, 'uploads/item/5fa4e6cf95c05.jpg', '', NULL, 'kepka1604642511', 1, 25000, NULL, '2020-11-06', NULL),
 (36, 'barsa forma', 1, 1, 1, NULL, 'uploads/item/5fa4ee23cea8f.png', 'barsa forma', NULL, 'barsaforma1604644387', 1, 50000, NULL, '2020-11-06', NULL),
@@ -304,10 +304,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `email`, `photo`, `password_hash`, `status`, `auth_key`, `password_reset_token`, `account_activation_token`, `created_at`, `updated_at`, `tumans_shahars_id`) VALUES
 (1, 'sardor', 'sardor88.88@mail.ru', 'uploads/user/5fa63c50e2d03.jpg', '$2y$13$n0somayxG5khwJWMuw9X/ezj8o99qAt9P6d2h6qnSQIKDgREBASNK', 10, 'PAUC8hfLd-o7QxsFNNPiGdRaopbh-NS8', NULL, NULL, 1602674219, 1604729936, NULL),
-(2, 'lfc', 'Lfc@lfc.com', NULL, '$2y$13$EqTMMDS.m8ywa72rg8a3d.zyIkADkLFY5LbWJLzPxnzslgFbH/N9e', 10, '5GYW7ygAhiFCcVGZyaZt9qn2DHsOuy4A', NULL, NULL, 1602754393, 1603096278, NULL),
+(2, 'lfc', 'Lfc@lfc.com', 'uploads/user/5fa901938dfb6.jpg', '$2y$13$EqTMMDS.m8ywa72rg8a3d.zyIkADkLFY5LbWJLzPxnzslgFbH/N9e', 10, '5GYW7ygAhiFCcVGZyaZt9qn2DHsOuy4A', NULL, NULL, 1602754393, 1605180047, 1),
 (3, 'Erkinjon', 'sasa@ok.ru', 'uploads/user/5fa646ee90076.jpg', '$2y$13$G0hX7Wpd7pdxlDpqDgBGMu4Zu3xbBAhZfAspF7aVjObHGFprpmm6W', 10, 'CzcBjxXuk_7l21eXwE7lsFsP-Isg-mwm', NULL, NULL, 1603088764, 1604732666, 5),
 (4, 'user', 'user@mail.ru', NULL, '$2y$13$N4OSCO0gLW.IxbbfVMqNMeiPm7VTHJovM1EVQzBZeTsWnjFq5UApC', 10, '0Jr5-yzhEW_jlTT9J1tr-eANE3UmKkwM', NULL, NULL, 1603692491, 1603692491, NULL),
-(5, 'user1', 'user1@mail.ru', NULL, '$2y$13$rKHZ6DmoUCqon.BFc8sWbeoKIx1l7m0u19UXkNqMC7q/thqNJz0VS', 10, 'GBA7i6nHSkysAdlrN9Huk95Y45WFfIyj', NULL, NULL, 1604569702, 1604569702, NULL);
+(5, 'user1', 'user1@mail.ru', NULL, '$2y$13$rKHZ6DmoUCqon.BFc8sWbeoKIx1l7m0u19UXkNqMC7q/thqNJz0VS', 10, 'GBA7i6nHSkysAdlrN9Huk95Y45WFfIyj', NULL, NULL, 1604569702, 1604569702, NULL),
+(6, 'Rafael', 'rafa@mail.ru', NULL, '$2y$13$fV5DwfIbx1Gse4AdnzTqq.2qaB01.itgeLEBYoA5nel56ljp7Exia', 10, 'LsaRLF1Fjhx-PQB7hyB5mdLLR9KkRcgB', NULL, NULL, 1605333662, 1605333662, NULL);
 
 -- --------------------------------------------------------
 
@@ -452,7 +453,7 @@ ALTER TABLE `tumans_shahars`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `viloyats`
