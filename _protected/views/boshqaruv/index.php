@@ -290,6 +290,10 @@ $user = Yii::$app->user->identity;
         tooltip.innerHTML = "Copy to clipboard";
     }
 </script>
+<script>
+    // document.getElementById("demo").innerHTML = window.location;
+    console.log(window.location);
+</script>
 
 
 <!--<section style="padding-top: 20px ">-->

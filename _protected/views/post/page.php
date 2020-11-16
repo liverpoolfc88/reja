@@ -34,7 +34,7 @@
             <div class="col-md-4">
                 <div class="card-box-b card-shadow news-box">
                     <div class="img-box-b">
-                        <img src="/themes/assets/img/post-1.jpg" alt="" class="img-b img-fluid">
+                        <img src="/<?=$value->photo?>" alt="" class="img-b img-fluid">
                     </div>
                     <div class="card-overlay">
                         <div class="card-header-b">
@@ -106,7 +106,6 @@
 
 
 <script>
-
     $.ajax({
         type: "POST",
         url: '/boshqaruv/url',
@@ -118,6 +117,11 @@
     });
         document.getElementById("demo").innerHTML =
          window.location.href;
+</script>
+
+<script>
+    // document.getElementById("demo").innerHTML = window.location;
+    console.log(window.location.href);
 </script>
 
 <!---->

@@ -146,7 +146,8 @@ class BoshqaruvController extends Controller
             $model->photo = rasm($model, 'photo');
 
             $model->user_id = Yii::$app->user->identity->id;
-            $model->slug = strtolower(str_replace(" ","&",$model->name.time()));
+//            $model->slug = strtolower(str_replace(" ","&",$model->name.time()));
+            $model->slug = time();
             $model->status = 0;
             $model->save();
             return $this->redirect(['index']);
@@ -275,7 +276,7 @@ class BoshqaruvController extends Controller
             }
             $model->photo = rasm($model, 'photo');
             $model->tuman_shahar_id = $this->idid()->tumans_shahars_id;
-            $model->slug = strtolower(str_replace(" ","",$model->name.time()));
+            $model->slug = time();
             $model->shop_id = $this->idid()->id;
             $model->user_id = Yii::$app->user->identity->id;
 
