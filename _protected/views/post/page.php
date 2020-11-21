@@ -1,3 +1,6 @@
+<?
+$this->title = $shop->name;
+?>
 <!-- ======= Intro Single ======= -->
 
 <section style="padding-top: 0px" class="intro-single">
@@ -66,7 +69,7 @@
                             <div class="modal-body">
                                 <span><?=$value->slug?></span>
                                 <div>
-                                <img style="width: 100%" src="/themes/assets/img/post-1.jpg">
+                                <img style="width: 100%" src="/<?=$value->photo?>">
                                 </div>
                                 <div class="row">
                                 <div class="col-md-6">
@@ -93,43 +96,32 @@
     </div>
 
 
-<!--     Button trigger modal -->
-<!--    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">-->
-<!--        Launch demo modal-->
-<!--    </button>-->
-
-    <!-- Modal -->
-
-
 </section>
 
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $.ajax({
-        type: "POST",
-        url: '/boshqaruv/url',
-        data: window.location.href,
-        success:  function( data ) {
-            $( ".result" ).html( data );
-        });,
-        dataType: dataType
-    });
-        document.getElementById("demo").innerHTML =
-         window.location.href;
+    $(function() {
+        $(function() {
+            var link = window.location.href;
+            var id = <?=$shop->id?>;
+
+        $.ajax({
+           method: "POST",
+           data: {
+               'link': link,
+               'url_id': id
+
+           },
+           dataType: 'json',
+           url: '/boshqaruv/manzil',
+           success:  function( data ) {
+               console.log(data);
+           },
+           error:function(e){
+               console.log(e);
+           }.bind(this),
+        });
+    });  });
+
 </script>
 
-<script>
-    // document.getElementById("demo").innerHTML = window.location;
-    console.log(window.location.href);
-</script>
-
-<!---->
-<!--<script>-->
-<!--    var value = 'salom';-->
-<!--    document.getElementById("myModalLabel").innerHTML = value;-->
-<!---->
-<!--    function myFunction(value) {-->
-<!--        alert(value);-->
-<!--    }-->
-<!--</script>-->

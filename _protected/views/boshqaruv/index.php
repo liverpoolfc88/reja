@@ -96,7 +96,7 @@ $user = Yii::$app->user->identity;
 
 </style>
 <section>
-    <div class="container">
+    <div class="container-fluid">
         <div class="col-md-12">
             <div class="row section-t3">
                 <div class="col-sm-12">
@@ -142,6 +142,7 @@ $user = Yii::$app->user->identity;
                                 </button>
                             </a>
                     </div>
+                    <hr>
                 </div>
                 <div class="padbut col-md-6 col-lg-3">
                     <img src="/<?=$user->photo?>" alt="" class="img-fluid">
@@ -177,6 +178,7 @@ $user = Yii::$app->user->identity;
                         </a>
 
                     </div>
+                    <hr>
                 </div>
             </div>
         </div>
@@ -203,17 +205,25 @@ $user = Yii::$app->user->identity;
                         </div>
                         <div class="col-md-6">
                             <div class="title-single-box">
-                                <h1 class="title-single"><i class="fa fa-telegram"> Kanalingizgaga linkni joylang!</i></h1>
+                                <h1 class="title-single"><i style="color: #00c054" class="fa fa-telegram"> Kanalingizga linkni joylang!</i></h1>
 
 
                                     <div class="row" >
-                                        <div style="padding-top: 10px" class="col-md-8">
-                                        <input  class="form-control" type="text" value="<?=$_SERVER['HTTP_REFERER']?>" id="myInput">
+                                        <div style="padding-top: 15px" class="col-md-6">
+                                            <a href="<?=$shop->url?>">
+                                                <input  class="form-control" type="text" style="font-size: 10px" readonly value="<?=$shop->url?>" id="myInput">
+                                            </a>
                                         </div>
-                                        <div style="padding-top: 10px" class="col-md-4">
-                                            <button  class=" w3-round-xxlarge w3-button w3-green" onclick="myFunction()" onmouseout="outFunc()">
-                                                Nusxa olish
-                                            </button>
+                                        <div  class="col-md-6">
+                                            <div class="row">
+                                                <div style="padding-top: 10px" class="col-md-6">
+                                                    <button  class=" w3-round-xxlarge w3-button w3-green" onclick="myFunction()" onmouseout="outFunc()">
+                                                        Nusxa olish
+                                                    </button>
+                                                </div>
+                                            </div>
+
+
                                         </div>
                                     </div>
 
@@ -289,10 +299,6 @@ $user = Yii::$app->user->identity;
         var tooltip = document.getElementById("myTooltip");
         tooltip.innerHTML = "Copy to clipboard";
     }
-</script>
-<script>
-    // document.getElementById("demo").innerHTML = window.location;
-    console.log(window.location);
 </script>
 
 

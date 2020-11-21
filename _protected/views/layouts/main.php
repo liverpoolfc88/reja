@@ -43,7 +43,8 @@ $controlleraction = Yii::$app->controller->action->id;
 <?php $this->beginBody() ?>
 <div class="">
     <div style="padding: 0px" class="container-fluid">
-        <?=($action == 'boshqaruv' )?Yii::$app->controller->renderPartial("//layouts/header"):Yii::$app->controller->renderPartial("//layouts/headerindex")?>
+<!--        --><?//=($action == 'boshqaruv' )?Yii::$app->controller->renderPartial("//layouts/header"):Yii::$app->controller->renderPartial("//layouts/headerindex")?>
+        <?=Yii::$app->controller->renderPartial("//layouts/header")?>
         <?= $content ?>
         <?=Yii::$app->controller->renderPartial("//layouts/footer")?>
     </div>

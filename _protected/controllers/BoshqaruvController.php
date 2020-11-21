@@ -38,19 +38,19 @@ class BoshqaruvController extends Controller
      *
      * @return array
      */
-    public function beforeAction($action)
-    {
-        $id = Yii::$app->user->identity->id;
-        $u = User::find()->where(['id'=>$id])->one();
-        $shop = $u->shop;
-
-        if (Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        return parent::beforeAction($action);
-
-    }
+//    public function beforeAction($action)
+//    {
+//        $id = Yii::$app->user->identity->id;
+//        $u = User::find()->where(['id'=>$id])->one();
+//        $shop = $u->shop;
+//
+////        if (Yii::$app->user->isGuest) {
+////            return $this->goHome();
+////        }
+//
+//        return parent::beforeAction($action);
+//
+//    }
     public function behaviors()
     {
         return [
@@ -415,9 +415,29 @@ class BoshqaruvController extends Controller
         }
     }
 
-    public function actionUrl(){
-        $this->enableCsrfValidation = false;
+    public function actionShopitemview(){
 
+    }
+
+    public function actionManzil(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+
+        $request = Yii::$app->request;
+        if($request->post()){
+
+            $id = $request->post('url_id');
+            $link = $request->post('link');
+
+            $model = $this->findShopmodel($id);
+
+            if  ($model->url != $link){
+                $model->url = $link;
+                $model->save(false);
+//                return 'okk';
+            }
+            return 'okkkk';
+        }
+        return '';
 
 
     }
