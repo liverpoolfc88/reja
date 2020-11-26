@@ -12,11 +12,7 @@ $user = Yii::$app->user->identity;
         padding-bottom: 20px;
     }
     /*.media-body:hover{*/
-    .media:hover{
-        /*font-size: 16px;*/
-        background-color: #ecf0f5;
-        color: #0a73bb;
-    }
+
     .w3-red, .w3-hover-red:hover {
          color: white!important;
          background-color: #00c054!important;
