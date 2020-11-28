@@ -243,7 +243,7 @@ $user = Yii::$app->user->identity;
                         <div class="card-box-b card-shadow news-box">
                             <div class="img-box-b">
 <!--                                --><?// var_dump($item->photo); die();   ?>
-                                <img style="height: 300px" src="/<?=$item->photo?>" alt="" class="img-b img-fluid">
+                                <img style="" src="/<?=$item->photo?>" alt="" class="img-b img-fluid">
                             </div>
                             <div class="card-overlay">
                                 <div class="card-header-b">
@@ -252,7 +252,7 @@ $user = Yii::$app->user->identity;
                                     </div>
                                     <div class="card-title-b">
                                         <h2 class="title-2">
-                                            <a href="blog-single.html"><?=$item->name?>
+                                            <a href=""><?=$item->name?>
                                                 <br></a>
                                             <span class="date-b"><?=($item->updated_date)?$item->updated_date:$item->created_date ?></span>
                                         </h2>

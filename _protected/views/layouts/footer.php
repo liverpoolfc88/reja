@@ -152,7 +152,7 @@
                     Licensing information: https://bootstrapmade.com/license/
                     Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
                   -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+<!--                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
                 </div>
             </div>
         </div>
@@ -161,3 +161,20 @@
 
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <div id="preloader"></div>
+<?
+$this->registerJs('
+     $(".viewcount").click(function(e){
+        e.preventDefault();
+        var id = $(this).attr("id");        
+//         alert(id);
+        $.get("/site/viewupdate",{id: id}, function(response){
+                if(response.status == true){               
+//                  alert(id);
+                    $("span."+id).html(" ("+response.data+")");
+                  console.log("dadada");
+                } else console.log("response.result");
+            });
+     });
+');
+
+?>

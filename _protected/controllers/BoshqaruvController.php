@@ -103,20 +103,15 @@ class BoshqaruvController extends Controller
         $u = User::find()->where(['id'=>$id])->one();
         $shop = $u->shop;
         if (!empty($shop)){
-
             $shop = $this->idid();
             $shopitem = ShopItems::find()->where(['shop_id'=>$shop->id])->all();
-
 //            var_dump($shopitem); die();
-
             return $this->render('index', [
                 'shop' => $shop,
                 'shopitem'=> $shopitem
             ]);
         }
-
         return $this->actionShopcreate();
-
     }
 
 
@@ -147,7 +142,7 @@ class BoshqaruvController extends Controller
 
             $model->user_id = Yii::$app->user->identity->id;
 //            $model->slug = strtolower(str_replace(" ","&",$model->name.time()));
-            $model->slug = time();
+            $model->slug = Yii::$app->user->identity->username.Yii::$app->user->identity->id.time();
             $model->status = 0;
             $model->save();
             return $this->redirect(['index']);
@@ -254,6 +249,7 @@ class BoshqaruvController extends Controller
 
     public function actionCreate()
     {
+//        var_dump(Yii::$app->user->identity->id.time()); die();
         $model = new ShopItems();
 
         if ($model->load(Yii::$app->request->post()) ) {
@@ -276,7 +272,7 @@ class BoshqaruvController extends Controller
             }
             $model->photo = rasm($model, 'photo');
             $model->tuman_shahar_id = $this->idid()->tumans_shahars_id;
-            $model->slug = time();
+            $model->slug = Yii::$app->user->identity->username.Yii::$app->user->identity->id.time();
             $model->shop_id = $this->idid()->id;
             $model->user_id = Yii::$app->user->identity->id;
 

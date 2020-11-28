@@ -48,7 +48,7 @@ class ShopItems extends \yii\db\ActiveRecord
             [['slug'], 'unique'],
             [['created_date', 'updated_date'], 'safe'],
             [['name', 'title', 'short'], 'string', 'max' => 255],
-            [['photo'],'file','extensions' => 'png, jpg'],
+            [['photo'],'file','extensions' => 'png,jpeg, jpg'],
             [['photo', 'slug'], 'string', 'max' => 128],
             [['shop_id'], 'exist', 'skipOnError' => true, 'targetClass' => Shops::className(), 'targetAttribute' => ['shop_id' => 'id']],
             [['tuman_shahar_id'], 'exist', 'skipOnError' => true, 'targetClass' => TumansShahars::className(), 'targetAttribute' => ['tuman_shahar_id' => 'id']],

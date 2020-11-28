@@ -1,4 +1,5 @@
 <?php
+
 namespace app\controllers;
 
 use app\models\Shops;
@@ -21,7 +22,6 @@ use function GuzzleHttp\Promise\all;
 use yii\web\Response;
 use yii\data\Pagination;
 use app\models\ShopItems;
-
 
 
 /**
@@ -94,11 +94,11 @@ class SiteController extends Controller
      */
     public function actionIndex($slug = '', $item_slug = '')
     {
-        if ($slug){
-            $menu = TumansShahars::find()->where(['slug'=>$slug])->one();
-            $shop = Shops::find()->where(['tumans_shahars_id'=>$menu->id])->all();
+        if ($slug) {
+            $menu = TumansShahars::find()->where(['slug' => $slug])->one();
+            $shop = Shops::find()->where(['tumans_shahars_id' => $menu->id])->all();
             if ($item_slug) {
-                $shop = Shops::find()->where(['slug'=>$item_slug])->orderBy(['id'=>SORT_DESC])->all();
+                $shop = Shops::find()->where(['slug' => $item_slug])->orderBy(['id' => SORT_DESC])->all();
             }
 //            var_dump($shop); die();
 //            var_dump($shop[0]->id); die();
@@ -108,7 +108,7 @@ class SiteController extends Controller
                     break;
 
                 case 1:
-                    return $this->renderPage($shop,$menu);
+                    return $this->renderPage($shop, $menu);
                     break;
 
                 default:
@@ -116,7 +116,7 @@ class SiteController extends Controller
                     break;
             }
 
-            return $this->render('/'.$menu->template().'/pages');
+            return $this->render('/' . $menu->template() . '/pages');
         }
 
         return $this->render('index');
@@ -124,9 +124,9 @@ class SiteController extends Controller
 
     public function actionProfile()
     {
-        if (!Yii::$app->user->isGuest){
+        if (!Yii::$app->user->isGuest) {
             $user = Yii::$app->user->identity->id;
-            $model = ShopItems::find()->where(['user_id'=>$user])->one();
+            $model = ShopItems::find()->where(['user_id' => $user])->one();
 //            $shop = Shops::find()->where(['id'=>$model->])->one();
 //            var_dump($model); die();
         }
@@ -134,40 +134,51 @@ class SiteController extends Controller
 
     public function renderPage($shop, $menu)
     {
-        $shop_item = ShopItems::find()->where(['shop_id'=>$shop[0]->id])->all();
+        $shop_item = ShopItems::find()->where(['shop_id' => $shop[0]->id])->all();
         $shop = $shop[0];
 //        $shop_item = $shop_item[0];
         $shop->views += 1;
         $shop->save(false);
-        return $this->render('/'.$menu->template().'/page',[
-            'shop'=>$shop,
-            'menu'=>$menu,
-            'shop_item'=>$shop_item
-            ]);
+        return $this->render('/' . $menu->template() . '/page', [
+            'shop' => $shop,
+            'menu' => $menu,
+            'shop_item' => $shop_item
+        ]);
     }
 
     public function renderPages($slug)
     {
-        $menu = TumansShahars::find()->where(['slug'=>$slug])->one();
+        $menu = TumansShahars::find()->where(['slug' => $slug])->one();
         // sardor
-        $query = Shops::find()->where(['tumans_shahars_id'=>$menu->id])
+        $query = Shops::find()->where(['tumans_shahars_id' => $menu->id])
 //            ->andWhere(['status'=>[MenuItem::STATUS_ACTIVE,MenuItem::STATUS_INACTIVE]]);
-            ->andWhere(['status'=>1]);
+            ->andWhere(['status' => 1]);
 
         $countQuery = clone $query;
 
         $pages = new Pagination([
             'totalCount' => $countQuery->count(),
-            'pageSize' => 12 ]);
-        $models = $query->offset($pages->offset)->orderBy(['id'=>SORT_DESC])->limit($pages->limit)->all();
+            'pageSize' => 12]);
+        $models = $query->offset($pages->offset)->orderBy(['id' => SORT_DESC])->limit($pages->limit)->all();
         // echo "<pre>";var_dump($models); die;
-        return $this->render('/'.$menu->template().'/pages',[
+        return $this->render('/' . $menu->template() . '/pages', [
             'model' => $models,
             'pages' => $pages,
             'menu' => $menu
         ]);
     }
 
+    public function actionViewupdate($id)
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $items_view = ShopItems::find()->where(['id'=>$id])->one();
+        if ($id){
+            $items_view->views +=  1;
+            $items_view->save();
+            return array('status'=>true, 'data' =>  $items_view->views );
+        }
+        return 'ishlaaaa';
+    }
 
 
     /**
@@ -198,9 +209,9 @@ class SiteController extends Controller
             return $this->refresh();
         }
 
-        Yii::$app->session->setFlash('success', Yii::t('app', 
+        Yii::$app->session->setFlash('success', Yii::t('app',
             'Thank you for contacting us. We will respond to you as soon as possible.'));
-        
+
         return $this->refresh();
     }
 
@@ -237,10 +248,10 @@ class SiteController extends Controller
 
         // if user's account is not activated, he will have to activate it first
         if ($model->status === User::STATUS_INACTIVE && $successfulLogin === false) {
-            Yii::$app->session->setFlash('error', Yii::t('app', 
+            Yii::$app->session->setFlash('error', Yii::t('app',
                 'You have to activate your account first. Please check your email.'));
             return $this->refresh();
-        } 
+        }
 
         // if user is not denied because he is not active, then his credentials are not good
         if ($successfulLogin === false) {
@@ -263,9 +274,9 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-/*----------------*
- * PASSWORD RESET *
- *----------------*/
+    /*----------------*
+     * PASSWORD RESET *
+     *----------------*/
 
     /**
      * Sends email that contains link for password reset action.
@@ -281,7 +292,7 @@ class SiteController extends Controller
         }
 
         if (!$model->sendEmail()) {
-            Yii::$app->session->setFlash('error', Yii::t('app', 
+            Yii::$app->session->setFlash('error', Yii::t('app',
                 'Sorry, we are unable to reset password for email provided.'));
             return $this->refresh();
         }
@@ -294,7 +305,7 @@ class SiteController extends Controller
     /**
      * Resets password.
      *
-     * @param  string $token Password reset token.
+     * @param string $token Password reset token.
      * @return string|\yii\web\Response
      *
      * @throws BadRequestHttpException
@@ -313,8 +324,8 @@ class SiteController extends Controller
 
         Yii::$app->session->setFlash('success', Yii::t('app', 'New password was saved.'));
 
-        return $this->goHome();      
-    }    
+        return $this->goHome();
+    }
 
 //------------------------------------------------------------------------------------------------//
 // SIGN UP / ACCOUNT ACTIVATION
@@ -323,14 +334,14 @@ class SiteController extends Controller
     /**
      * Signs up the user.
      * If user need to activate his account via email, we will display him
-     * message with instructions and send him account activation email with link containing account activation token. 
+     * message with instructions and send him account activation email with link containing account activation token.
      * If activation is not necessary, we will log him in right after sign up process is complete.
-     * NOTE: You can decide whether or not activation is necessary, @see config/params.php
+     * NOTE: You can decide whether or not activation is necessary, @return string|\yii\web\Response
+     * @see config/params.php
      *
-     * @return string|\yii\web\Response
      */
     public function actionSignup()
-    {  
+    {
         // get setting value for 'Registration Needs Activation'
         $rna = Yii::$app->params['rna'];
 
@@ -339,7 +350,7 @@ class SiteController extends Controller
 
         // if validation didn't pass, reload the form to show errors
         if (!$model->load(Yii::$app->request->post()) || !$model->validate()) {
-            return $this->render('signup', ['model' => $model]);  
+            return $this->render('signup', ['model' => $model]);
         }
 
         // try to save user data in database, if successful, the user object will be returned
@@ -359,15 +370,15 @@ class SiteController extends Controller
 
         // now we will try to log user in
         // if login fails we will display error message, else just redirect to home page
-    
+
         if (!Yii::$app->user->login($user)) {
             // display error message to user
             Yii::$app->session->setFlash('warning', Yii::t('app', 'Please try to log in.'));
 
             // log this error, so we can debug possible problem easier.
-            Yii::error('Login after sign up failed! User '.Html::encode($user->username).' could not log in.');
+            Yii::error('Login after sign up failed! User ' . Html::encode($user->username) . ' could not log in.');
         }
-                      
+
         return $this->goHome();
     }
 
@@ -382,28 +393,28 @@ class SiteController extends Controller
         // sending email has failed
         if (!$model->sendAccountActivationEmail($user)) {
             // display error message to user
-            Yii::$app->session->setFlash('error', Yii::t('app', 
+            Yii::$app->session->setFlash('error', Yii::t('app',
                 'We couldn\'t send you account activation email, please contact us.'));
 
             // log this error, so we can debug possible problem easier.
-            Yii::error('Signup failed! User '.Html::encode($user->username).' could not sign up. 
+            Yii::error('Signup failed! User ' . Html::encode($user->username) . ' could not sign up. 
                 Possible causes: verification email could not be sent.');
         }
 
         // everything is OK
-        Yii::$app->session->setFlash('success', Yii::t('app', 'Hello').' '.Html::encode($user->username). '. ' .
+        Yii::$app->session->setFlash('success', Yii::t('app', 'Hello') . ' ' . Html::encode($user->username) . '. ' .
             Yii::t('app', 'To be able to log in, you need to confirm your registration. 
                 Please check your email, we have sent you a message.'));
     }
 
-/*--------------------*
- * ACCOUNT ACTIVATION *
- *--------------------*/
+    /*--------------------*
+     * ACCOUNT ACTIVATION *
+     *--------------------*/
 
     /**
      * Activates the user account so he can log in into system.
      *
-     * @param  string $token
+     * @param string $token
      * @return \yii\web\Response
      *
      * @throws BadRequestHttpException
@@ -417,13 +428,13 @@ class SiteController extends Controller
         }
 
         if (!$user->activateAccount()) {
-            Yii::$app->session->setFlash('error', Html::encode($user->username). Yii::t('app', 
-                ' your account could not be activated, please contact us!'));
+            Yii::$app->session->setFlash('error', Html::encode($user->username) . Yii::t('app',
+                    ' your account could not be activated, please contact us!'));
             return $this->goHome();
         }
 
-        Yii::$app->session->setFlash('success', Yii::t('app', 'Success! You can now log in.').' '.
-            Yii::t('app', 'Thank you').' '.Html::encode($user->username).' '.Yii::t('app', 'for joining us!'));
+        Yii::$app->session->setFlash('success', Yii::t('app', 'Success! You can now log in.') . ' ' .
+            Yii::t('app', 'Thank you') . ' ' . Html::encode($user->username) . ' ' . Yii::t('app', 'for joining us!'));
 
         return $this->redirect('login');
     }
