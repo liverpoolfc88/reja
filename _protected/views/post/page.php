@@ -49,7 +49,7 @@ $this->title = $shop->name;
                                 </div>
                                 <div class="card-title-b">
                                     <h2 class="title-2">
-                                        <a href="blog-single.html"><?= $value->short ?>
+<!--                                        <a href="blog-single.html">--><?//= $value->short ?>
 <!--                                            <br>-->
                                         </a>
                                     </h2>

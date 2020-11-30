@@ -96,9 +96,9 @@ class SiteController extends Controller
     {
         if ($slug) {
             $menu = TumansShahars::find()->where(['slug' => $slug])->one();
-            $shop = Shops::find()->where(['tumans_shahars_id' => $menu->id])->all();
+            $shop = Shops::find()->where(['tumans_shahars_id' => $menu->id])->andWhere(['status' => 1])->all();
             if ($item_slug) {
-                $shop = Shops::find()->where(['slug' => $item_slug])->orderBy(['id' => SORT_DESC])->all();
+                $shop = Shops::find()->where(['slug' => $item_slug])->andWhere(['status' => 1])->orderBy(['id' => SORT_DESC])->all();
             }
 //            var_dump($shop); die();
 //            var_dump($shop[0]->id); die();
@@ -150,9 +150,9 @@ class SiteController extends Controller
     {
         $menu = TumansShahars::find()->where(['slug' => $slug])->one();
         // sardor
-        $query = Shops::find()->where(['tumans_shahars_id' => $menu->id])
+        $query = Shops::find()->where(['tumans_shahars_id' => $menu->id]);
 //            ->andWhere(['status'=>[MenuItem::STATUS_ACTIVE,MenuItem::STATUS_INACTIVE]]);
-            ->andWhere(['status' => 1]);
+//            ->andWhere(['status' => 1]);
 
         $countQuery = clone $query;
 

@@ -59,7 +59,7 @@ $controlleraction = Yii::$app->controller->action->id;
 
             <!--            --><?//=($controlleraction != 'update')?$form->field($model, 'slug')->textInput(['maxlength' => true]):'' ?>
 <!---->
-            <?= $form->field($model, 'photo')->fileInput(['style'=>'padding-top:34px']) ?>
+            <?= $form->field($model, 'photo')->fileInput(['style'=>'padding-top:34px','required'=>true]) ?>
 
 <!--            <input style="padding-top: 34px" name="photo" required type="file" id="photo">-->
 
