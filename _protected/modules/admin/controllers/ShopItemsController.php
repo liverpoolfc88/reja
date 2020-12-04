@@ -41,6 +41,9 @@ class ShopItemsController extends Controller
         $searchModel = new ShopItemsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $kerak = ShopItems::find()->all();
+
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

@@ -178,3 +178,54 @@ $this->registerJs('
 ');
 
 ?>
+
+
+<section>
+    <div class="row">
+        <?php if ($items->goods) : ?>
+            <?php foreach ($items->goods as $key => $item) : ?>
+                <div class="col-md-6">
+                    <div style="padding: 10px 0" class="w3-container">
+                        <div class="w3-card-4" style="width:100%; padding: 10px 0">
+
+                            <div class="w3-container">
+
+                                <p ><?= $item->item->title.' ( '.$item->item->template->title.' )' ?></p>
+                                <hr>
+                                <img  src="<?= $item->item->photo ?>" alt="Avatar" class="w3-left w3-circle w3-margin-right"
+                                      style="width:20%; height: 60px">
+                                <p>
+                                    <button title="<?=$key?>"  class="minus">--</button>
+                                    <input class="input lolo <?=$key?>" style="width: 20%" value="<?= $item->count ?>">
+                                    <button title="<?=$key?>" class="plyus">+</button>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</section>
+
+<script>
+    $("button.minus").click(function(e){
+        e.preventDefault();
+        let title = $(this).attr("title");
+        let a =  $("input."+title).val();
+        a = parseInt(a);
+        if (a>1){
+            $("input."+title).val(a-1);
+        }
+    });
+    $("button.plyus").click(function(e){
+        e.preventDefault();
+        let title = $(this).attr("title");
+        let a =  $("input."+title).val();
+        a = parseInt(a);
+        $("input."+title).val(a+1);
+    });
+</script>
